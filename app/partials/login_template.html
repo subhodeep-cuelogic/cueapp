@@ -1,0 +1,36 @@
+<div id="templatemo_content">
+	<form name="loginFrm" class="loginFrm">
+	<fieldset>
+		<legend>Login</legend>	
+		<p align="center" class="cred_txt"><b>{{ msgtxt }}<b></p>
+		<br>
+		<label style="width:100px;display:inline-block;margin-bottom:10px;">Name</label>
+
+		<input type="email" name="userEmail" ng-model="user.email" placeholder="Enter your email" required/>
+		
+		
+		<span class="error" ng-show="loginFrm.userEmail.$dirty && loginFrm.userEmail.$error.required">
+      		User Email is Required!
+      	</span>
+    	<span class="error" ng-show="loginFrm.userEmail.$error.email">
+      		Not valid email!
+      	</span>
+		<br>
+
+		<label style="width:100px;display:inline-block;margin-bottom:10px;">Password</label>
+		<input type="password" name="userPassword" ng-model="user.password" placeholder="Enter your password" required ng-minlength="6" ng-maxlength="10" />
+		<span class="error" ng-show="loginFrm.userPassword.$dirty && loginFrm.userPassword.$error.required">
+      		Password is Required!
+      	</span>
+      	<span class="error" ng-show="loginFrm.userPassword.$error.minlength">
+      		Password should be minimum 6 characters !!
+      	</span>
+    	<span class="error" ng-show="loginFrm.userPassword.$error.maxlength">
+      		Password can be maximum 10 characters !!
+      	</span>
+		<br>
+
+		<button  ng-click="checkLogin(user)" ng-disabled="loginFrm.$invalid">Login</button>
+	</fieldset>
+	</form>
+</div>

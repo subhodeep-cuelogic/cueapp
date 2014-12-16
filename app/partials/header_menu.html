@@ -1,0 +1,25 @@
+<div id="templatemo_menu" ng-controller="headerCtrl">
+    <div id="templatemo_menu_left"></div>
+    <ul>
+        <li ng-class="{current: loc.path() == '/home'}"><a href="#/home" class="current">
+                  Home</a>
+        </li>
+        <li ng-class="{current: loc.path() == '/about-us'}"><a href="#/about-us">About Us</a>
+        </li>
+        <li ng-class="{current: loc.path() == '/join-us'}"> <a href="#/join-us">Join us</a>
+        </li>
+        <li ng-class="{current: loc.path() == '/cuelogic/clients'}"><a href="#/cuelogic/clients">Clients</a>
+        </li>
+        
+        <li ng-class="{current: loc.path() == '/login'}" style="background-color:#ed652e" ng-hide="isLoggedIn" ><a href="#/login" style="color:yellow;">
+                  Login</a>
+        </li>
+        <!-- <li><a href="/terms-and-conditions" class="last">Terms and </a></li> -->
+
+        <li style="background-color:#ed652e" ng-controller="logoutCtrl" ng-show="isLoggedIn"><a href="#/logout" style="color:yellow;" ng-click="logout()">
+                  Logout</a>
+        </li>
+
+    </ul>
+</div>
+<!-- end of menu -->
