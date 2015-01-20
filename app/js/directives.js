@@ -46,24 +46,32 @@ angular.module('myApp.directives', [])
       templateUrl: 'partials/login_template.html'
     }
   })
+  
+.directive('activeLink', function($location) {
 
+    var link = function(scope, element, attrs) {
 
-  .directive('trackActive', function($location) {
-    function link(scope, element, attrs){
-        scope.$watch(function() {
-            return $location.path();
-        }, function(){
-            var links = element.find('a');
-            links.removeClass('current');
-            angular.forEach(links, function(value){
-                var a = angular.element(value);
-                if (a.attr('href') == '#' + $location.path() ){
-                    a.addClass('current');
-                }
-            });
+        scope.$watch(function() { return $location.path(); }, 
+        function(path) {
+          console.log(path);
+            var url = element.find('a').attr('href');
+            if (url) {
+                url = url.substring(1);
+            }
+
+            if (path == url) {
+                element.addClass("nav_active");
+            } else {
+                element.removeClass('nav_active');
+            }
+
         });
-    }
-    return {link: link};
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
 });
 
   

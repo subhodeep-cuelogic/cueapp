@@ -101,7 +101,6 @@ img {
 	line-height: 40px;	
 	color: #ffffff;
 }
-
 .header_02 {
 	clear: both;
 	padding-bottom: 20px;
@@ -202,6 +201,7 @@ img {
 	padding: 0px;
 	margin: 0px;
 	display: inline;
+	color: #919191;
 }
 
 #templatemo_menu ul li a{
@@ -212,10 +212,10 @@ img {
 	background: url(../img/templatemo_menu_divider.jpg) right repeat-y;
 	text-align: center;
 	font-size: 14px;
-	text-decoration: none;
-	color: #919191;	
+	text-decoration: none;	
 	font-weight: normal;
 	outline: none;
+	color: inherit;
 }
 
 #templatemo_menu li a:hover, #templatemo_menu li .current{
@@ -474,5 +474,7 @@ img {
 	color: blue;
 }
 
-
+.nav_active {
+	color: #bbd142 !important;	
+}
 

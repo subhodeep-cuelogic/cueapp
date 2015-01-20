@@ -21,23 +21,29 @@
      $userEmail = $user->email;
      $userPassword = $user->password;
 
-	$sql = "SELECT useremail, password FROM login WHERE useremail = '".$user->email."' AND password='".$user->password."'";
+	$sql = "SELECT firstname, useremail, password FROM login WHERE useremail = '".$user->email."' AND password='".$user->password."'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) 
 	{
-	 	echo "success"   ;
+	 	//echo "success"   ;
+	 	
+
 	    // output data of each row
-	    /*while($row = $result->fetch_assoc()) 
+	    while($row = $result->fetch_assoc()) 
 	    {
-	        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-	    }*/
+	        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+	        $arrResponse = array('responseval' => "success",'useremail' => $row["useremail"], 'firstname' => $row["firstname"]);
+	    }
 
 	} else 
 	{
 
-	    echo "error";
+	    $arrResponse = array('responseval' => "error");
 	}
+
+	echo json_encode($arrResponse);
+
 	$conn->close();
 
 

@@ -18,6 +18,7 @@ myApp.factory('loginService', function ($http) {
 		login:function (user, scope, location, rootScope){
 			//console.log('Enter function service');
 			var $promise = $http.post('data/user.php', user);
+			//console.log($promise);
 			return $promise;
 		}
 	}	

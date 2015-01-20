@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
   'ngRoute',
+  'ngCookies',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -19,8 +20,9 @@ config(['$routeProvider', function($routeProvider) {
   //$routeProvider.when('/logout', {templateUrl: 'partials/login.html', controller: 'logoutCtrl'});
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
-run(function($rootScope, $location) {
-  $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+run(function($rootScope, $location, $cookieStore) {
+  $rootScope.loggedInUser = $cookieStore.get('loggedInUserCookie');
+  $rootScope.$on( "$routeChangeStart", function(event, next, current) {    
     if ($rootScope.loggedInUser == null) {
       // no logged user, redirect to /login
       if ( next.templateUrl === "partials/login.html") {
